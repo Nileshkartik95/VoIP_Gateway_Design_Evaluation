@@ -1,0 +1,41 @@
+﻿
+    <Page
+    x:Class="ContactManager.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ContactManager"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+            <TextBlock Text="Contact Manager" FontSize="30" HorizontalAlignment="Center" Margin="0,20,0,20"/>
+
+            <ItemsControl ItemsSource="{x:Bind Contacts}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                            <TextBlock Text="{Binding Name}" Width="150" Margin="0,0,10,0"/>
+                            <TextBlock Text="{Binding Phone}" Width="150"/>
+                            <Button Content="Delete" Click="DeleteContact_Click" Tag="{Binding}" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="nameTextBox" PlaceholderText="Name" Width="150" Margin="0,0,10,0"/>
+                <TextBox x:Name="phoneTextBox" PlaceholderText="Phone" Width="150" Margin="0,0,10,0"/>
+                <Button Content="Add Contact" Click="AddContact_Click"/>
+            </StackPanel>
+
+            <TextBlock x:Name="addedContactsTextBlock" Text="Added Contacts:" Margin="0,20,0,10"/>
+
+            <TextBlock x:Name="addedContactsListTextBlock" Text="" />
+        </StackPanel>
+    </Grid>
+
+
+</Page>
